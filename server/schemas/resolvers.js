@@ -6,13 +6,13 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userInfo = await User.findOne({
+          _id: context?.user?._id,
+        }).populate("savedBooks");
 
-        return userData;
+        return userInfo;
       }
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError("You must be logged in!");
     },
   },
 
