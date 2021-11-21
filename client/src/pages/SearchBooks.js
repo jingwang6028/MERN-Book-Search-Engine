@@ -74,10 +74,13 @@ const SearchBooks = () => {
     if (!token) {
       return false;
     }
-
+    console.log(token);
+    console.log("saving book");
     try {
       const { data } = await saveBook({
-        variables: { input: { ...bookToSave } },
+        variables: {
+          book: { ...bookToSave },
+        },
       });
 
       console.log("searchBooks: ", data);

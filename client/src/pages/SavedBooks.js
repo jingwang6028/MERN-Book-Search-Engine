@@ -32,8 +32,6 @@ const SavedBooks = () => {
         variables: { bookId },
       });
 
-      console.log("saveBooks: ", data);
-
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
